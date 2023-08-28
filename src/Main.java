@@ -1,10 +1,8 @@
 public class Main {
     public static void main(String[] args) {
-        Shell shell = new Shell();
-        shell.init();
-        shell.run();
 
         PhoneBook book = new PhoneBook();
+        book.init();
         book.run();
     }
 }

@@ -23,7 +23,7 @@ public class Contact {
 
 
     public void showContact(){
-        System.out.println("    " + lastName + " " + firstName + " " + patronymic);
+        System.out.println("    " + makeSolidName());
         for (String phoneNumber : phoneNumbers){
             System.out.println("        " + phoneNumber);
         }
@@ -38,7 +38,21 @@ public class Contact {
         return true;
     }
 
+    public String makeSolidName(){
+        String solidName = "";
 
+        if (this.lastName != null){
+            solidName = this.lastName;
+        }
+        if (this.firstName != null){
+            solidName = solidName + " " + this.firstName;
+        }
+        if (this.patronymic != null){
+            solidName = solidName + " " + this.patronymic;
+        }
+
+        return solidName;
+    }
 
 
 }
