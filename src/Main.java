@@ -1,5 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        Shell shell = new Shell();
+        shell.run();
     }
 }
