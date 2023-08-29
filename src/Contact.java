@@ -5,12 +5,12 @@ public class Contact {
     String firstName, lastName, patronymic;
     ArrayList<String> phoneNumbers;
 
-    Contact(String lastName, String firstName, String patronymic, ArrayList<String> phoneNumbers){
+    Contact(String lastName, String firstName, String patronymic, ArrayList<String> phoneNumbers) {
         this(firstName, lastName, phoneNumbers);
         this.patronymic = patronymic;
     }
 
-    Contact(String firstName, String lastName, ArrayList<String> phoneNumbers){
+    Contact(String firstName, String lastName, ArrayList<String> phoneNumbers) {
         this(firstName, phoneNumbers);
         this.lastName = lastName;
     }
@@ -21,16 +21,15 @@ public class Contact {
         this.phoneNumbers.addAll(phoneNumbers);
     }
 
-
-    public void showContact(){
+    public void showContact() {
         System.out.println("    " + makeSolidName());
-        for (String phoneNumber : phoneNumbers){
+        for (String phoneNumber : phoneNumbers) {
             System.out.println("        " + phoneNumber);
         }
         System.out.println();
     }
 
-    public boolean updateContactData(String firstName, String lastName, String patronymic, ArrayList<String> phoneNumbers){
+    public boolean updateContactData(String firstName, String lastName, String patronymic, ArrayList<String> phoneNumbers) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.patronymic = patronymic;
@@ -38,21 +37,18 @@ public class Contact {
         return true;
     }
 
-    public String makeSolidName(){
+    public String makeSolidName() {
         String solidName = "";
 
-        if (this.lastName != null){
+        if (this.lastName != null) {
             solidName = this.lastName;
         }
-        if (this.firstName != null){
+        if (this.firstName != null) {
             solidName = solidName + " " + this.firstName;
         }
-        if (this.patronymic != null){
+        if (this.patronymic != null) {
             solidName = solidName + " " + this.patronymic;
         }
-
         return solidName;
     }
-
-
 }

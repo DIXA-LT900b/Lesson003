@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
-
 public class PhoneBook {
 
     ArrayList<Contact> contacts = new ArrayList<>();
@@ -13,7 +12,7 @@ public class PhoneBook {
     boolean isRun;
     byte choose;
 
-    public void init(){
+    public void init() {
 
         // Тестовое создание групп
 
@@ -29,7 +28,7 @@ public class PhoneBook {
 
         phones.add("+7-918-106-63-06");
         phones.add("+7 918 542 99 65");
-        addContact("Иванов","Иван", "Иванович", phones);
+        addContact("Иванов", "Иван", "Иванович", phones);
         phones.clear();
 
         phones.add("+79996662288");
@@ -52,9 +51,9 @@ public class PhoneBook {
         addContactToGroup(contacts.get(1), "Друзья");
         addContactToGroup(contacts.get(0), "Друзья");
         addContactToGroup(contacts.get(2), "Работа");
-
     }
-    public void run(){
+
+    public void run() {
         this.isRun = true;
 
         while (isRun) {
@@ -75,8 +74,7 @@ public class PhoneBook {
                     System.out.println("Введите отчество : ");
                     patronymic = userInput.nextLine();
 
-
-                    while (addAnotherPhone == 'Y' || addAnotherPhone == 'y'){
+                    while (addAnotherPhone == 'Y' || addAnotherPhone == 'y') {
                         System.out.println("Введите номер телефона : ");
                         phone = userInput.nextLine();
 
@@ -85,9 +83,10 @@ public class PhoneBook {
                         System.out.println(addAnotherPhone);
                         phones.add(phone);
                     }
-                    addContact(lastname, firstname,patronymic,phones);
+                    addContact(lastname, firstname, patronymic, phones);
                     break;
                 }
+
                 case 2: {
                     String phoneNumber, group;
                     Contact contact;
@@ -103,6 +102,7 @@ public class PhoneBook {
 
                     break;
                 }
+
                 case 3: {
                     System.out.println("Удалить контакт из группы.");
 
@@ -113,13 +113,14 @@ public class PhoneBook {
                     String group = userInput.nextLine().trim();
 
                     Contact foundedContact = findContactByPhoneNumber(phoneNumber);
-                    if (foundedContact != null){
+                    if (foundedContact != null) {
                         removeContactFromGroup(foundedContact, group);
                     } else {
                         System.out.println("Операция невозможна. Контакт не найден.");
                     }
                     break;
                 }
+
                 case 4: {
                     System.out.println("Стереть контакт.");
 
@@ -132,11 +133,8 @@ public class PhoneBook {
 
                     break;
                 }
-                case 5: {
 
-                    break;
-                }
-                case 6: {
+                case 5: {
                     System.out.println("Создать новую группу.");
                     System.out.print("Введите название для новой группы : ");
 
@@ -146,7 +144,8 @@ public class PhoneBook {
                     groupAdd(newGroup);
                     break;
                 }
-                case 7: {
+
+                case 6: {
                     System.out.println("Удаление группы.");
                     System.out.println("Введите название группы, которую хотите удалить : ");
 
@@ -156,12 +155,14 @@ public class PhoneBook {
                     groupRemove(groupToRemove);
                     break;
                 }
-                case 8: {
+
+                case 7: {
                     System.out.println("Просмотр всех групп.");
                     showGroups();
                     break;
                 }
-                case 9: {
+
+                case 8: {
                     String phoneNumber;
                     Contact contact;
 
@@ -171,14 +172,15 @@ public class PhoneBook {
                     phoneNumber = userInput.nextLine().trim();
 
                     contact = findContactByPhoneNumber(phoneNumber);
-                    if (contact != null){
+                    if (contact != null) {
                         System.out.println("Контакт найден : ");
                         contact.showContact();
                     }
 
                     break;
                 }
-                case 10: {
+
+                case 9: {
                     String phone, group;
                     Contact contact;
 
@@ -192,12 +194,14 @@ public class PhoneBook {
 
                     break;
                 }
-                case 11: {
+
+                case 10: {
                     System.out.println("Просмотр всех контактов.");
                     showAllContacts();
 
                     break;
                 }
+
                 case 0: {
                     isRun = false;
                     break;
@@ -206,14 +210,12 @@ public class PhoneBook {
         }
     }
 
-
-
-    public byte showUserMenu(){
+    public byte showUserMenu() {
         System.out.println();
         System.out.println("        Контакты                                Группы                              Поиск");
-        System.out.println("1. Создать контакт.                     6. Создать новую группу.            9. Поиск контакта по номеру.");
-        System.out.println("2. Добавить контакт в группу.           7. Удалить группу.                 10. Поиск контакта в группе.");
-        System.out.println("3. Удалить контакт из группы.           8. Просмотр всех групп.            11. Просмотр всех контактов. ");
+        System.out.println("1. Создать контакт.                     5. Создать новую группу.            8. Поиск контакта по номеру.");
+        System.out.println("2. Добавить контакт в группу.           6. Удалить группу.                  9. Поиск контакта в группе.");
+        System.out.println("3. Удалить контакт из группы.           7. Просмотр всех групп.            10. Просмотр всех контактов. ");
         System.out.println("4. Стереть контакт.");
         System.out.println();
         System.out.print("Выберите пункт меню (Введите 0 для выхода): ");
@@ -224,18 +226,13 @@ public class PhoneBook {
 
     }
 
-
-
-
-
-
-    public void addContact(String lastname, String firstname,                   // 1. Создать новый контакт
-                           String patronymic, ArrayList<String> phones){
+    public void addContact(String lastname, String firstname,                               // 1. Создать новый контакт
+                           String patronymic, ArrayList<String> phones) {
         contacts.add(new Contact(lastname, firstname, patronymic, phones));
         System.out.println("Новый контакт добавлен.");
     }
 
-    public void addContactToGroup(Contact contactToAdd, String group){          //2. Добавить контакт в группу
+    public void addContactToGroup(Contact contactToAdd, String group) {                 //2. Добавить контакт в группу
         if (groupsAndContacts.containsKey(group)) {
             if (!groupsAndContacts.get(group).contains(contactToAdd)) {
                 groupsAndContacts.get(group).add(contactToAdd);
@@ -247,9 +244,7 @@ public class PhoneBook {
         }
     }
 
-
-
-    public void removeContactFromGroup(Contact contactToRemove, String group){              // 3. Удалить контакт из группы
+    public void removeContactFromGroup(Contact contactToRemove, String group) {          // 3. Удалить контакт из группы
         if (contactToRemove != null) {
             if (groupsAndContacts.containsKey(group)) {
                 if (this.groupsAndContacts.get(group).contains(contactToRemove)) {
@@ -264,9 +259,9 @@ public class PhoneBook {
         }
     }
 
-    public void deleteContact(Contact contactToDelete){                 // 4. Стереть контакт
+    public void deleteContact(Contact contactToDelete) {                                        // 4. Стереть контакт
 
-        for (HashMap.Entry entry: groupsAndContacts.entrySet()) {
+        for (HashMap.Entry entry : groupsAndContacts.entrySet()) {
             removeContactFromGroup(contactToDelete, (String) entry.getKey());
         }
 
@@ -278,7 +273,7 @@ public class PhoneBook {
         }
     }
 
-    public void groupAdd(String newGroup){                  // 6. Создать новую группу
+    public void groupAdd(String newGroup) {                                                 // 5. Создать новую группу
         if (!groups.contains(newGroup)) {
             if (newGroup != "") {
                 this.groups.add(newGroup);
@@ -292,7 +287,7 @@ public class PhoneBook {
         }
     }
 
-    public void groupRemove(String groupToRemove) {                 // 7. Удалить группу
+    public void groupRemove(String groupToRemove) {                                             // 6. Удалить группу
         if (groups.contains(groupToRemove)) {
             this.groups.remove(groupToRemove);
             this.groupsAndContacts.remove(groupToRemove);
@@ -302,8 +297,8 @@ public class PhoneBook {
         }
     }
 
-    public void showGroups(){                   // 8. Просмотр всех групп
-        for (HashMap.Entry entry: groupsAndContacts.entrySet()) {
+    public void showGroups() {                                                              // 7. Просмотр всех групп
+        for (HashMap.Entry entry : groupsAndContacts.entrySet()) {
             System.out.println(entry.getKey());
             if (((ArrayList<Contact>) entry.getValue()).size() != 0) {
                 for (Contact contact : (ArrayList<Contact>) entry.getValue()) {
@@ -316,11 +311,11 @@ public class PhoneBook {
         }
     }
 
-    public Contact findContactByPhoneNumber(String phoneNumber){            // 9. Поиск контакта по номеру.
+    public Contact findContactByPhoneNumber(String phoneNumber) {                       // 8. Поиск контакта по номеру.
         boolean isFound = false;
-        for (Contact contact : contacts){
-            for (String phone : contact.phoneNumbers){
-                if (phone.equals(phoneNumber)){
+        for (Contact contact : contacts) {
+            for (String phone : contact.phoneNumbers) {
+                if (phone.equals(phoneNumber)) {
                     contact.showContact();
                     isFound = true;
                     return contact;
@@ -328,18 +323,18 @@ public class PhoneBook {
             }
         }
 
-        if (!isFound){
+        if (!isFound) {
             System.out.println("Контакт не найден.");
         }
         return null;
     }
 
-    public void findContactInGroup(String phoneNumber, String group){               // 10. Поиск контакта в группе
+    public void findContactInGroup(String phoneNumber, String group) {                  // 9. Поиск контакта в группе
         Contact contact;
         contact = findContactByPhoneNumber(phoneNumber);
 
-        if (groupsAndContacts.containsKey(group)){
-            if (groupsAndContacts.get(group).contains(contact)){
+        if (groupsAndContacts.containsKey(group)) {
+            if (groupsAndContacts.get(group).contains(contact)) {
                 System.out.println("Контакт с номером " + phoneNumber + " состоит в группе " + group + ".");
             } else {
                 System.out.println("Контакт с номером " + phoneNumber + " не состоит в группе " + group + ".");
@@ -349,11 +344,11 @@ public class PhoneBook {
         }
     }
 
-    public void showAllContacts(){                  // 11. Просмотр всех контактов
-        for (Contact contact : contacts){
+    public void showAllContacts() {                                                     // 10. Просмотр всех контактов
+        for (Contact contact : contacts) {
             System.out.println("    " + contact.makeSolidName());
             ArrayList<String> phones1 = contact.phoneNumbers;
-            for (String phone : phones1){
+            for (String phone : phones1) {
                 System.out.println("        " + phone);
             }
             System.out.println();
